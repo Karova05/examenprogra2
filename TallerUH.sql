@@ -116,7 +116,7 @@ CONSTRAINT fk_tecnicoID FOREIGN KEY (tecnicoID) REFERENCES tecnicos (tecnicoID)
 INSERT INTO equipos (equipoID, modelo) VALUES (1, 'nombremodelo');
 
 
-CREATE PROCEDURE consultatipo
+CREATE PROCEDURE consultatipo_filtro
 
 @equipoID int
 
@@ -222,61 +222,6 @@ AS
 BEGIN
 
 UPDATE usuarios SET @usuarioid=@usuarioid WHERE usuarioID=@usuarioid;
-
-END
-
-INSERT INTO tecnicos (tecnicoID, nombre) VALUES (1, 'nombre');
-
-
-CREATE PROCEDURE consultatipo_filtro
-
-@tecnicoID int
-
-
-AS
-
-BEGIN
-
-SELECT * FROM tecnicos WHERE tecnicoID=@tecnicoID; 
-
-END
-
-CREATE PROCEDURE agregartecnicos
-
-@nombre VARCHAR (50)
-
-AS
-
-BEGIN
-
-INSERT INTO tecnicos (nombre) VALUES (@nombre)
-
-END
-
-
-CREATE PROCEDURE borrartecnicos
-
-
-@nombre VARCHAR (50)
-
-AS
-
-BEGIN
-
-DELETE FROM tecnicos WHERE nombre=@nombre
-
-END
-
-CREATE PROCEDURE modificartecnicos
-
-@tecnicoid int
-
-
-AS
-
-BEGIN
-
-UPDATE tecnicos SET @tecnicoid=@tecnicoid WHERE tecnicoID=@tecnicoid;
 
 END
 

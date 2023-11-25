@@ -24,22 +24,22 @@ namespace examenprogra2
         protected global::System.Web.UI.WebControls.GridView datagrid;
 
         /// <summary>
-        /// tcodigo control.
+        /// tid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tcodigo;
+        protected global::System.Web.UI.WebControls.TextBox tid;
 
         /// <summary>
-        /// tdescripcion control.
+        /// tnombre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tdescripcion;
+        protected global::System.Web.UI.WebControls.TextBox tnombre;
 
         /// <summary>
         /// Button1 control.

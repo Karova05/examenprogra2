@@ -21,20 +21,17 @@
     </div>
 
     <div class="container text-center">
-        Codigo: <asp:TextBox ID="tcodigo" class="form-control" runat="server"></asp:TextBox>
-        Equipo: <asp:TextBox ID="tdescripcion" class="form-control" runat="server"></asp:TextBox>
-
+        id: <asp:TextBox ID="tid" class="form-control" runat="server"></asp:TextBox>
+        nombre: <asp:TextBox ID="tnombre" class="form-control" runat="server"></asp:TextBox>
 
       </div>
 
-
-
     <div class="container text-center">
 
-        <asp:Button ID="Button1" class="btn btn-outline-primary" runat="server" Text="Agregar" />
-        <asp:Button ID="Button2" class="btn btn-outline-secondary" runat="server" Text="Borrar" />
-        <asp:Button ID="Button3" runat="server" class="btn btn-outline-secondary" Text="Modificar" />
-        <asp:Button ID="Bconsulta" runat="server" class="btn btn-outline-primary" Text="Consultar"/>
+        <asp:Button ID="Button1" class="btn btn-outline-primary" runat="server" Text="agregar" />
+        <asp:Button ID="Button2" class="btn btn-outline-secondary" runat="server" Text="borrar" />
+        <asp:Button ID="Button3" runat="server" class="btn btn-outline-secondary" Text="modificar" />
+        <asp:Button ID="Bconsulta" runat="server" class="btn btn-outline-primary" Text="consultar" />
         
 
     </div>

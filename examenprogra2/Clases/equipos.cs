@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Data.SqlClient;
 using System.Configuration;
+using System.Data.SqlClient;
 using System.Data;
+using System.Linq;
 using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using examenprogra2.Clases;
+using System.Drawing;
 
 namespace examenprogra2.Clases
 {
@@ -32,32 +36,31 @@ namespace examenprogra2.Clases
 
         public equipos() { }
 
-        public static int agregar(string descripcion)
+        public static int agregar(string modelo)
         {
             int retorno = 0;
 
-            SqlConnection Conn = new SqlConnection();
-            try
+            using (SqlConnection Conn = DBConn.ObtenerConexion ())
             {
-                using (Conn = DBConn.obtenerConexion())
-                {
-                    SqlCommand cmd = new SqlCommand("INGRESAREQUIPO", Conn)
+                try
+            {
+                
+                    SqlCommand cmd = new SqlCommand("agregarequipo", Conn)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
-                    cmd.Parameters.Add(new SqlParameter("@DESCRIPCION", descripcion));
+                    cmd.Parameters.Add(new SqlParameter("@modelo", modelo));
 
 
                     retorno = cmd.ExecuteNonQuery();
-                }
+                
             }
-            catch (System.Data.SqlClient.SqlException ex)
+            catch (SqlException ex)
             {
                 retorno = -1;
+            
             }
-            finally
-            {
-                Conn.Close();
+
             }
 
             return retorno;
@@ -65,34 +68,30 @@ namespace examenprogra2.Clases
         }
 
 
-
-
-        public static int borrar(int codigo)
+        public static int borrar(string modelo)
         {
             int retorno = 0;
 
-            SqlConnection Conn = new SqlConnection();
-            try
+            using (SqlConnection Conn = DBConn.ObtenerConexion())
             {
-                using (Conn = DBConn.obtenerConexion())
+                try
                 {
-                    SqlCommand cmd = new SqlCommand("BORRAREQUIPO", Conn)
-                    {
-                        CommandType = CommandType.StoredProcedure
+                    SqlCommand cmd = new SqlCommand("borrarequipos", Conn)
+                {
+                      CommandType = CommandType.StoredProcedure
                     };
-                    cmd.Parameters.Add(new SqlParameter("@CODIGO", codigo));
+                    cmd.Parameters.Add(new SqlParameter("@modelo", modelo));
 
 
                     retorno = cmd.ExecuteNonQuery();
-                }
+                
             }
-            catch (System.Data.SqlClient.SqlException ex)
+            catch (SqlException ex)
             {
                 retorno = -1;
+            
+                   
             }
-            finally
-            {
-                Conn.Close();
             }
 
             return retorno;
@@ -100,12 +99,65 @@ namespace examenprogra2.Clases
         }
 
 
+        public static int consultatipofiltro(int equipoid)
+        {
+            int retorno = 0;
+
+            using (SqlConnection Conn = DBConn.ObtenerConexion())
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("consultatipofiltro", Conn)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    cmd.Parameters.Add(new SqlParameter("@equipoID", equipoid));
 
 
+                    retorno = cmd.ExecuteNonQuery();
 
-        public void consultarconfiltro() { }
+                }
+                catch (SqlException ex)
+                {
+                    retorno = -1;
 
-        public void modificar() { }
+
+                }
+            }
+
+            return retorno;
+
+        }
+
+        public static int modificar(int equipoid)
+        {
+            int retorno = 0;
+
+            using (SqlConnection Conn = DBConn.ObtenerConexion())
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("modificar", Conn)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    cmd.Parameters.Add(new SqlParameter("@equipoID", equipoid));
+
+
+                    retorno = cmd.ExecuteNonQuery();
+
+                }
+                catch (SqlException ex)
+                {
+                    retorno = -1;
+
+
+                }
+            }
+
+            return retorno;
+
+        }
 
 
 
